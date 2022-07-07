@@ -42,6 +42,8 @@ function fizzBuzzWhileLoop(max) {
 
     while (i < max) {
         if (i % 3 === 0 && i % 5 !== 0 || i % 3 !== 0 && i % 5 === 0) {
+    // or ((i % 3 === 0 || i % 5 === 0) && !(i % 3 === 0 && i % 5 === 0))
+    
             console.log(i);
         }
         i++;
