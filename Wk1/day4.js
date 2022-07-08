@@ -1,22 +1,23 @@
-// Most Expensive Groceries
 /*
-You are compiling a price checker for a grocery store. The grocery prices are as 
-follows: butter: $1, eggs: $2, milk: $3, bread: $4, cheese: $5
-First, create a function called costOfGroceries(groceries) which takes a single 
-array of grocery items and returns the total cost.
-Then, write a function mostExpensiveGroceries(groceriesList) that takes in a 2-dimensional 
-array of grocery items and returns the index of the sub-array with the highest cost.
+Write a function twoSum(arr, target) that accepts an array and a target number
+as args. The function should a return a boolean indicating if two distinct numbers 
+of the array add up to the target value. You can assume that input array contains 
+only unique numbers.
 */
 
+let twoSum = function(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+        let first = arr[i];
 
-//StringChanger
-/*
-Build a function called stringChanger() that takes in two arguments: a word and 
-an operation. Based on the operation, your function will return the word modified 
-in some way. The operations are:
-'capitalize': Capitalize the first letter in the word.
-'uppercase': Capitalize every letter in the word.
-'double': Return the word twice in a row.
-'reverse': Return the string with the letters in reverse order.
-If the operation is invalid, return the word, unchanged.
-*/
+        for (let j = i+1; j < arr.length; j++) {
+            let second = arr[j]
+
+            if (first + second === target) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
+console.log(twoSum([1,2,4,3,5,4,5,6], 12))
