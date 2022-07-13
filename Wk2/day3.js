@@ -28,3 +28,91 @@ console.log(chainMap(25, add5, half, square));  // 225
 console.log(chainMap(4, square, half));         // 8
 console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
+
+
+
+/*******************************************************************************
+Write a function `minValueCallback` that accepts an array and an optional callback as arguments.
+If a callback is not passed in, then the function should return the smallest
+value in the array. If a callback is passed in, then the function should return
+the result of the smallest value being passed into the given callback.
+
+Examples:
+console.log(minValueCallback([64, 25, 49, 9, 100]));             // 9
+console.log(minValueCallback([64, 25, 49, 9, 100], Math.sqrt));  // 3
+
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Write a function `suffixCipher` that accepts a sentence and object as arguments.
+The object contains suffixes as keys and callbacks as values. The `suffixCipher`
+function should return a new sentence where words of the original sentence are
+modified according to the callback that corresponds with the suffix that the word
+ends with. If the word does not end in any of the suffix keys, then it should not
+be modified. You can assume that only one suffix of the object will match a word.
+
+Examples:
+
+let cipher1 = {
+    ly: function(word) {
+        return word.slice(0, -1) + 'ee';
+    },
+    ize: function(word) {
+        return word + 'r';
+    }
+};
+console.log(suffixCipher('quietly and gently visualize', cipher1));
+// quietlee and gentlee visualizer
+
+let cipher2 = {
+    tal: function(word) {
+        return word.toUpperCase();
+    },
+    s: function(word) {
+        return word + 'th';
+    }
+};
+console.log(suffixCipher('incremental progress is very instrumental', cipher2));
+// INCREMENTAL progressth isth very INSTRUMENTAL
+*******************************************************************************/
+
+
+
+/*******************************************************************************
+Write a function `alternatingMap` that accepts an array and two callbacks as
+arguments. The function should return a new array containing the results of passing
+the original elements into the callbacks in an alternating fashion.
+
+In other words,
+    - the first element should be passed to callback 1
+    - the second element should be passed to callback 2
+    - the third element should be passed to callback 1
+    - the fourth element should be passed to callback 2
+    - ... and so on
+
+Examples:
+
+let triple = function (n) {
+    return 3 * n;
+};
+
+let half = function (n) {
+    return n / 2;
+};
+console.log(alternatingMap([7, 3, 2, 9, 8], triple, half));
+// [ 21, 1.5, 6, 4.5, 24 ]
+
+
+let yell = function (s) {
+    return s.toUpperCase() + '!';
+};
+
+let whisper = function (s) {
+    return '..' + s.toLowerCase() + '..';
+};
+console.log(alternatingMap(['hEy', 'EVERYone', 'whats', 'uP??'], yell, whisper));
+// [ 'HEY!', '..everyone..', 'WHATS!', '..up??..' ]
+
+*******************************************************************************/
