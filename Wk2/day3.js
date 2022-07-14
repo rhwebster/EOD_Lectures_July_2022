@@ -29,7 +29,21 @@ console.log(chainMap(4, square, half));         // 8
 console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
 
+// function chainMap(val, ...cb) {
+//     for (let i = 0; i < cb.length; i++) {
+        // function(cb) {
+        //     val = cb(val);
+        // }   
+//     }
+//     return val;
+// }
 
+function chainMap(val, ...cb) {
+    cb.forEach(function(cb) {
+        val = cb(val);
+    })
+    return val;
+}
 
 /*******************************************************************************
 Write a function `minValueCallback` that accepts an array and an optional callback as arguments.
@@ -43,7 +57,19 @@ console.log(minValueCallback([64, 25, 49, 9, 100], Math.sqrt));  // 3
 
 *******************************************************************************/
 
-
+let minValueCallback = (array, cb) => {
+    let smallest = array[0];
+    for(let i = 1; i < array.length; i++) {
+        if (smallest > array[i]) {
+            smallest = array[i];
+        }
+    }
+    if (cb === undefined) {
+        return smallest;
+    } else {
+        return cb(smallest);
+    }
+}
 
 /*******************************************************************************
 Write a function `suffixCipher` that accepts a sentence and object as arguments.
@@ -78,7 +104,19 @@ console.log(suffixCipher('incremental progress is very instrumental', cipher2));
 // INCREMENTAL progressth isth very INSTRUMENTAL
 *******************************************************************************/
 
-
+let suffixCipher = (sentence, obj) => {
+    let array = sentence.split(' ');
+    let newWord = array.map(function(word) {
+        for (let suffix in obj) {
+            if (word.endsWith(suffix)) {
+                let cb = obj[suffix];
+                return cb(word);
+            }
+        }
+        return word;
+    })
+    return newWord.join(' ');
+}
 
 /*******************************************************************************
 Write a function `alternatingMap` that accepts an array and two callbacks as
