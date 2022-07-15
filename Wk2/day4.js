@@ -11,7 +11,10 @@ let hidden2 = hiddenCounter(); // returns a function
 hidden2(); // returns 1
 */
 
-
+const hiddenCounter = () => {
+  let count = 0;
+  return () => count += 1;
+}
 
 //CountDown
 
@@ -37,7 +40,25 @@ Example 4:
   console.log(threeDays()); // prints "Happy New Year!"
 */
 
+let countDownTimer = (n) => {
+  if (n === 0) {
+    return 'Happy New Year!'
+  }
 
+  return function count () {
+    n--;
+    if (n === 0) {
+      return 'Happy New Year!!';
+    } else {
+      return count;
+    }
+  }
+}
+
+// let threeDays = countDownTimer(3);
+// console.log(threeDays());
+// console.log(threeDays());
+// console.log(threeDays());
 
 //SmoothieMachine
 
@@ -56,3 +77,20 @@ let smoothie2 = smoothieMachine('apples', 'bananas', 'berries');
 console.log(smoothie2('pineapple')); => prints 'I'm having a smoothie with apples 
     and bananas and berries and pineapple.'
 */
+
+const smoothieMachine = (...params) => {
+  let order = "I'm having a smoothie with "
+  return function(...moreParams) {
+    params = params.concat(moreParams);
+    // ['milk'] + ['kale', 'spinach']
+    // ['milk', 'kale', 'spinach']
+    // 'milk and kale and spinch'
+    // "I'm having a smoothie with "
+    return order + params.join(' and ') + '.';
+  }
+}
+
+let smoothie1 = smoothieMachine();
+console.log(smoothie1('milk'));
+console.log(smoothie1('kale', 'spinach'));
+console.log(smoothie1('honey', 'pears', 'berries'));
