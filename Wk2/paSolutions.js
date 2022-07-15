@@ -1,4 +1,68 @@
 /***********************************************************************
+Write a function `keyAdderUniqueVal(object, key, value)` that accepts an
+object, a string to be set as a key in that object, and a value. When invoked
+the function should assign the key and value arguments as a key value pair in
+the object argument ONLY IF the value is not already a value for a different
+key in the object. Return the mutated object.
+
+See below for examples
+
+let cat = { name: 'Willie', color: 'orange' };
+keyAdderUniqueVal(cat, "toy", "yarn"); // => {name: "Willie", color: "orange", toy: "yarn"}
+keyAdderUniqueVal(cat, "fruit", "orange"); // => {name: "Willie", color: "orange", toy: "yarn"}
+console.log(cat); // { name: "Willie", color: "orange", toy: "yarn" }
+***********************************************************************/
+
+function keyAdderUniqueVal(object, key, value) {
+    let vals = Object.values(object);
+    console.log(vals);
+
+    if (vals.indexOf(value) === -1) {
+        object[key] = value;
+    }
+
+    return object;
+}
+
+/***********************************************************************
+Write a function `duplicateCharMinCount(string, minCount)` that will takes
+a string as an argument and returns an array of characters that show up
+at least `minCount` number of times. The string will have at least one
+character.
+
+Examples:
+
+duplicateCharMinCount("paple", 2) // ["p"]
+duplicateCharMinCount("banana", 2) // ["a", "n"]
+duplicateCharMinCount("What about a longer string?", 3) // ["a", "t", " "]
+***********************************************************************/
+
+function countCharacters(string) {
+    // Your code here
+    let chars = string.split('');
+
+    let objChars = {};
+
+    chars.forEach(el => {
+        if (objChars[el] === undefined) {
+            objChars[el] = 1;
+        } else {
+            objChars[el]++;
+        }
+    });
+    return objChars;
+}
+
+function duplicateCharMinCount(string, minCount) {
+    // Your code here
+    const count = countCharacters(string);
+
+    const chars = Object.keys(count);
+
+    return chars.filter(char => count[char] >= minCount);
+}
+
+/***********************************************************************
 Write a function called `shoppingList(list)`. The shoppingList function will
 take in a starting list as an array and return a new function that will allow
 us to add to the list. When that return function is invoked with an
