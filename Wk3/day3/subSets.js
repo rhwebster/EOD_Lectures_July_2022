@@ -14,30 +14,3 @@ Hint: For subsets([1, 2, 3]), there are two kinds of subsets:
      subset that is the same, except it also does contain 3.
 ***********************************************************************/
 
-function factorial(num) {
-    if (num === 1) return 1
-
-    num * factorial(num-1);
-
-    return num;
-}
-
-function iterativeFactorial(num) {
-    let product = 1;
-
-    if (num === 1) return num;
-
-    product * helper(num);
-
-    return num
-}
-
-let helper = function(num) {
-    let product = 1
-    while (num > 1) {
-        product *= num;
-        num--;
-    }
-
-    return product
-}
