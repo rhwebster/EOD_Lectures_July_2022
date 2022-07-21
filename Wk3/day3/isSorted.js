@@ -9,6 +9,20 @@ isSorted([5, 4, 3, 2, 1]); => false
 
 function isSorted(arr) {
 
+    if (arr.length < 2) {
+        return true;
+    } else if (arr[0] < arr[1]) {
+        return isSorted(arr.slice(1))
+    } 
+
+    return false;
+}
+
+function isSorted(arr) {
+    if (arr.length < 2) return true;
+    if (arr[0] > arr[1]) return false;
+
+    return isSorted(arr.slice(1));
 }
 
 // console.log(isSorted([1, 2, 3, 4, 5]));

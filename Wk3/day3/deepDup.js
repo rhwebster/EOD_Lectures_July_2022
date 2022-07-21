@@ -26,3 +26,31 @@ let x = [1, 2, 3];
 let y = x.slice();
 console.log(x[0] === y[0]) => true
 */
+
+function deepDup(arr) {
+    let newArr = [];
+
+    for(let i = 0; i < arr.length; i++) {
+        if (Array.isArray(arr[i])) {
+            newArr.push(deepDup(arr[i]));
+        } else {
+            newArr.push(arr[i]);
+        }
+    }
+
+    return newArr;
+}
+
+arr = [[1], [2, [3]]]
+newArr = [[1], [2, [3]]]
+
+
+duped = deepDup(arr);
+console.log(duped);
+console.log(arr[0] === duped[0]);
+console.log(arr === newArr);
+console.log(arr[0] === newArr[0]);
+console.log(1 === 1);
+console.log(arr[1][0] === newArr[1][0])
+
+    
