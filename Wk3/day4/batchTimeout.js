@@ -21,5 +21,5 @@ console.log(timeoutObjs); => [ Timeout {...}, Timeout {...}, Timeout {...} ]
 */
 
 function batchTimeouts(cbs, delays) {
-    
-}
+
+};
