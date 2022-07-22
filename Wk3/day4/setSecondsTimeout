@@ -15,5 +15,5 @@ setSecondsTimeout(function () {
 */
 
 function setSecondsTimeout(cb, delay) {
-
+    return setTimeout(cb, delay*1000);
 };

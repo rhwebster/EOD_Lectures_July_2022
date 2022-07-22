@@ -8,8 +8,6 @@ is passed, the interval should be cleared after the callback has been
 called 'amount' number of times. If an amount argument is not passed,
 the interval should run indefinitely and `dynamicIntervalCount` should instead
 return the Timeout object for the interval.
-In addition to Mocha, we recommend that you test your code manually using 
-node with the examples below.
 Examples:
 dynamicIntervalCount(function() {
     console.log('hi');
@@ -21,5 +19,21 @@ console.log(timeoutObject); // Timeout { ... }
 */
 
 function dynamicIntervalCount(cb, delay, amount) {
+    let result;
 
+    if (amount === undefined) {
+        result = setInterval(cb, delay);
+        return result;
+    } else {
+        result = setInterval(function() {
+            cb();
+            amount--;
+            if (amount === 0) {
+                clearInterval(result);
+            }
+        }, delay);
+    }
 };
+
+// dynamicIntervalCount(cb, 500)
+console.log(0 === undefined);

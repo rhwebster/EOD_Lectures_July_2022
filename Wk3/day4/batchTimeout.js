@@ -21,5 +21,11 @@ console.log(timeoutObjs); => [ Timeout {...}, Timeout {...}, Timeout {...} ]
 */
 
 function batchTimeouts(cbs, delays) {
+    let newArr = [];
 
+    for (let i = 0; i < cbs.length; i++) {
+        newArr.push(setTimeout(cbs[i], delays[i]));
+    }
+
+    return newArr;
 };
