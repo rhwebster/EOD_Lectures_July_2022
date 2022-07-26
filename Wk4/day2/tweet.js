@@ -6,3 +6,5 @@
 class Tweet {
 
 };
+
+/* export the tweet class */

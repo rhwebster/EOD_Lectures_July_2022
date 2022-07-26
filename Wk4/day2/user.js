@@ -26,4 +26,6 @@ class User {
         7. showFollows: shows a list of the usernames of the users they follow
         8. addTweet: which adds a new tweet to the user's list of tweets
         9: allTweets: that prints the contents of all of the user's tweets
-    */
+*/
+
+/* export the user class */
