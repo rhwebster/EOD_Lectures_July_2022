@@ -4,7 +4,14 @@
 */
 
 class Tweet {
+    constructor(body) {
+        this.body = body;
+    }
 
+    printTweet() {
+        console.log(this.body);
+    }
 };
 
 /* export the tweet class */
+module.exports = Tweet;
